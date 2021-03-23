@@ -1,10 +1,14 @@
 package javaphotoshop;
 
+import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.RenderingHints;
+import java.awt.Robot;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -155,5 +159,22 @@ public class Images {
         g2d.dispose();
         
         return outputImage;
+    }
+    
+    public BufferedImage screenshot(){
+       try {
+            Robot robot = new Robot();
+
+            Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+            BufferedImage screenFullImage = robot.createScreenCapture(screenRect);
+             
+            System.out.println("A full screenshot saved!");
+            
+            return screenFullImage;
+        } catch (AWTException ex) {
+            System.err.println(ex);
+        }
+       
+       return null;
     }
 }
