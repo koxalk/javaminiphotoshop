@@ -140,4 +140,19 @@ public class Images {
 
         return resizedImage;
     }
+    
+    public BufferedImage resize_by_percent(BufferedImage img,double percent){
+        int scaledWidth = (int) (img.getWidth() * percent);
+        int scaledHeight = (int) (img.getHeight() * percent);
+        
+        BufferedImage outputImage = new BufferedImage(scaledWidth,
+                scaledHeight, img.getType());
+        
+        // scales the input image to the output image
+        Graphics2D g2d = outputImage.createGraphics();
+        g2d.drawImage(img, 0, 0, scaledWidth, scaledHeight, null);
+        g2d.dispose();
+        
+        return outputImage;
+    }
 }

@@ -18,7 +18,7 @@ public class TryImages {
         String type = "png";
         
         //svae the image using the type of image
-        String output = "C://Users/kosta/Documents/NetBeansProjects/JavaPhotoShop/src/output/resize20." + type;
+        String output = "C://Users/kosta/Documents/NetBeansProjects/JavaPhotoShop/src/output/resize2." + type;
         
         //set pixel of image
         imgt.setX_pixels(800);
@@ -52,7 +52,11 @@ public class TryImages {
         //  img = trf.combine_images(img,img);
           
         //resize image
-        img= imgt.resize(img,1024,768);
+        //img= imgt.resize(img,1024,768);
+        
+        //resize by percent
+        img= imgt.resize_by_percent(img, 1.5);
+        
         //save the new image
         imgt.writeImage(img, type, output);
     }
